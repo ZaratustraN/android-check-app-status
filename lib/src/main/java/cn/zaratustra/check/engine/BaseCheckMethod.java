@@ -3,7 +3,7 @@ package cn.zaratustra.check.engine;
 import android.content.Context;
 
 /**
- * Created by rosejames on 2017/9/17.
+ * Created by zaratustra on 2017/9/17.
  */
 
 public abstract class BaseCheckMethod {
@@ -23,21 +23,18 @@ public abstract class BaseCheckMethod {
 
     public abstract boolean isForeground(String processName);
 
+    public abstract String getForegroundProcess();
+
     public int getSupportMinAPI() {
         return supportMinAPI;
     }
 
-    public BaseCheckMethod setSupportMinAPI(int supportMinAPI) {
-        this.supportMinAPI = supportMinAPI;
-        return this;
-    }
-
-    public int getSupportMacAPI() {
+    public int getSupportMaxAPI() {
         return supportMaxAPI;
     }
 
-    public BaseCheckMethod setSupportMacAPI(int supportMaxAPI) {
-        this.supportMaxAPI = supportMaxAPI;
-        return this;
+    public void unitTest() {
+
     }
+
 }

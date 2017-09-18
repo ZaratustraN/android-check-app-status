@@ -8,7 +8,7 @@ import android.os.Build;
 import java.util.List;
 
 /**
- * Created by rosejames on 2017/9/17.
+ * Created by zaratustra on 2017/9/17.
  */
 
 public class RunningTaskMethod extends BaseCheckMethod {
@@ -22,7 +22,6 @@ public class RunningTaskMethod extends BaseCheckMethod {
         if (processName == null || processName.isEmpty()) {
             return false;
         }
-
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> runningTaskInfo = am.getRunningTasks(Integer.MAX_VALUE);
         if (null != runningTaskInfo && runningTaskInfo.size() > 0) {
@@ -33,21 +32,32 @@ public class RunningTaskMethod extends BaseCheckMethod {
                 }
             }
         }
-
         return false;
     }
 
     @Override
     public boolean isForeground(String processName) {
+        if (processName == null || processName.isEmpty()) {
+            return false;
+        }
+        String foregroundProcess = getForegroundProcess();
+        if (foregroundProcess != null && !foregroundProcess.isEmpty()
+                && foregroundProcess.equals(processName)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String getForegroundProcess() {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> runningTaskInfo = am.getRunningTasks(1);
         if (null != runningTaskInfo && runningTaskInfo.size() > 0) {
             ComponentName cn = runningTaskInfo.get(0).topActivity;
-            if (processName.equals(cn.getPackageName())) {
-                return true;
+            if (cn != null) {
+                return cn.getPackageName();
             }
         }
-
-        return false;
+        return "";
     }
 }

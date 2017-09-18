@@ -22,27 +22,6 @@ android {
         versionName "1.0"
     }
 
-    sourceSets {
-        main {
-            jni.srcDir 'src/main/cpp'
-        }
-    }
-
-    buildTypes {
-
-        debug {
-            minifyEnabled false
-            debuggable true
-            jniDebuggable true
-
-        }
-
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
 }
 
 dependencies {
