@@ -4,8 +4,8 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
-import cn.zaratustra.check.engine.BaseCheckMethod;
-import cn.zaratustra.check.engine.CheckMethodFactory;
+import cn.zaratustra.check.implement.BaseCheckMethod;
+import cn.zaratustra.check.implement.CheckMethodFactory;
 
 /**
  * Created by zaratustra on 2017/9/17.
